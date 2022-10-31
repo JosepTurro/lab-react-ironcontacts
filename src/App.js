@@ -9,6 +9,21 @@ function App() {
   const randomContact = contactesFinals[Math.floor(Math.random()*contactesFinals.length)]
   const [contactes, setContactes]= useState(contacts);
   console.log("Actors aaa: ", contacts)
+  console.log("Actors bbb: ", contactes)
+
+   function sortByName (){
+     const sortName = [...contactes.sort((a,b)=>{
+       return a.name.localeCompare(b.name);
+     })]
+     setContactes(sortName);
+    }
+
+  function sortByPop (){
+    const sortPop =[...contactes.sort((a,b)=>{
+       return b.popularity - a.popularity 
+    })]
+    setContactes(sortPop)
+  }
   
 
   function addContact(){
@@ -31,6 +46,8 @@ function App() {
     <div className="App">
       <h1>Iron Contacts</h1>
       <button onClick={addContact}>Add a Contact</button>
+      <button onClick={sortByName}>Sort by name</button>
+      <button onClick={sortByPop}>Sort by popularity</button>
       <table>
         <tr>
           <th>Picture</th>
